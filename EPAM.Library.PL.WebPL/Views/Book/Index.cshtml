@@ -1,0 +1,56 @@
+﻿@model IEnumerable<EPAM.Library.PL.WebPL.ViewModels.Book.DisplayBookVM>
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Books</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a class="btn btn-success" asp-controller="Book" asp-action="Create">
+                Create new book
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-active" style="width:100%">
+  <thead>
+    <tr>
+      <th scope="col" style="width:40%">    
+          Authors
+      </th>
+      <th scope="col" style="width:15%">
+          Name
+      </th>
+      <th scope="col" style="width:15%">
+          Year of publication
+      </th>
+      <th scope="col" style="width:30%">
+          Actions
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+      @foreach(var obj in Model)
+      {
+            <tr class="table-primary">
+                <td style="width:40%">
+                    @string.Join(", ", obj.Authors.Select(i => i.ToString()).ToArray());
+                </td>
+                <td style="width:15%">
+                    @obj.Name
+                </td>
+                <td style="width:15%">
+                    @obj.PublicationYear
+                </td>
+                <td style="width:30%">
+                    <a class="btn btn-primary d-inline-block" @*asp-action="" asp-route-id=""*@>Details</a>
+                    <a class="btn btn-danger d-inline-block">Delete</a>
+                </td>
+        </tr>
+      }
+</table>

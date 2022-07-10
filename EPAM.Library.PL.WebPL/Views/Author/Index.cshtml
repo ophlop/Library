@@ -1,0 +1,12 @@
+﻿@using EPAM.Library.Common 
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+    var authorLogic = AuthorsDependencyResolver.AuthorLogic;
+}
+
+<h1>Index</h1>
+@{
+    Html.RenderPartial("~/Views/Shared/_AuthorsList.cshtml", authorLogic.GetAll());
+}

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EPAM.Library.BLL.Interfaces\EPAM.Library.BLL.Interfaces.csproj" />
+    <ProjectReference Include="..\EPAM.Library.BLL\EPAM.Library.BLL.csproj" />
+    <ProjectReference Include="..\EPAM.Library.DAL.Interfaces\EPAM.Library.DAL.Interfaces.csproj" />
+    <ProjectReference Include="..\EPAM.Library.DAL\EPAM.Library.DAL.csproj" />
+  </ItemGroup>
+
+</Project>

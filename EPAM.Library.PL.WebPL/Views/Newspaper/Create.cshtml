@@ -1,0 +1,53 @@
+﻿@model EPAM.Library.PL.WebPL.Models.Newspaper.CreateNewspaperVM
+@{
+    ViewData["Title"] = "Create a book";
+}
+
+<div>
+    <form asp-controller="Newspaper" asp-action="Create" method="post" id="formCreate">
+        <div class="form-group pt-3 mt-4">
+            <div class="row pb-2">
+                <h2 class="text-primary">Create new book</h2>
+                <hr />
+            </div>
+            <div class="row mb-3">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" />
+            </div>
+            <div class="row mb-3">
+                <label asp-for="City"></label>
+                <input asp-for="City" />
+            </div>
+            <div class="row mb-3">
+                <label asp-for="Publisher"></label>
+                <input asp-for="Publisher" />
+            </div>
+            <div class="row mb-3">
+                <label asp-for="PublicationYear"></label>
+                <input asp-for="PublicationYear" />
+            </div>
+            <div class="row mb-3">
+                <label asp-for="Pages"></label>
+                <input asp-for="Pages" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label asp-for="ISSN"></label>
+            <input asp-for="ISSN" value="ISBN 91-678-67893" />
+        </div>
+        <div class="row mb-3">
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description">
+                desc
+            </textarea>
+        </div>
+        <div class="row mb-3">
+            <button type="submit" class="btn btn-primary" style="width:150px">
+                Create
+            </button>
+            <a class="btn btn-warning" style="width:150px" asp-controller="Book" asp-action="Index">
+                Go back to list
+            </a>
+        </div>
+    </form>
+</div>

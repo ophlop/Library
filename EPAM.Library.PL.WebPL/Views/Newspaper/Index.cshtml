@@ -1,0 +1,56 @@
+﻿@model IEnumerable<EPAM.Library.PL.WebPL.Models.Newspaper.DisplayNewspaperVM>
+
+@{
+    ViewData["Title"] = "Newspapers";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Newspapers</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a class="btn btn-success" asp-controller="Newspaper" asp-action="Create">
+                Create new book
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-active" style="width:100%">
+  <thead>
+    <tr>
+      <th scope="col" style="width:40%">    
+          Name
+      </th>
+      <th scope="col" style="width:15%">
+          Issue number
+      </th>
+      <th scope="col" style="width:15%">
+          Issue date
+      </th>
+      <th scope="col" style="width:30%">
+          Actions
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+      @foreach(var obj in Model)
+      {
+            <tr class="table-primary">
+                <td style="width:40%">
+                    @obj.Name
+                </td>
+                <td style="width:15%">
+                    @obj.IssueNumber
+                </td>
+                <td style="width:15%">
+                    @obj.IssueDate
+                </td>
+                <td style="width:30%">
+                    <a class="btn btn-primary d-inline-block" @*asp-action="" asp-route-id=""*@>Details</a>
+                    <a class="btn btn-danger d-inline-block">Delete</a>
+                </td>
+        </tr>
+      }
+</table>
