@@ -9,10 +9,10 @@
         private string _city;
         private string _publisher;
         private int _publicationYear;
-        private DateOnly _issueDate;
+        private DateTime _issueDate;
         private string _issn;
 
-        public Newspaper(string name, string city, string publisher, int pages, int publicationYear, DateOnly issueDate)
+        public Newspaper(string name, string city, string publisher, int pages, int publicationYear, DateTime issueDate)
         {
             Name = name;
             Pages = pages;
@@ -23,7 +23,7 @@
         }
 
         public Newspaper(string name, string city, string publisher, int pages, int publicationDate
-            , DateOnly issueDate, string issueNumber, string issn, string description)
+            , DateTime issueDate, string issueNumber, string issn, string description)
             : this(name, city, publisher, pages, publicationDate, issueDate)
         {
             ISSN = issn;
@@ -133,12 +133,12 @@
 
         public string IssueNumber { get; set; }
 
-        public DateOnly IssueDate
+        public DateTime IssueDate
         {
             get => _issueDate;
             set
             {
-                if(ValidationHelper.IsValidIssueDate(value, PublicationYear, out string message))
+                if (ValidationHelper.IsValidIssueDate(value, PublicationYear, out string message))
                 {
                     _issueDate = value;
                 }

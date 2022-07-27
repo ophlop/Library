@@ -1,8 +1,5 @@
 ﻿@model EPAM.Library.PL.WebPL.ViewModels.AuthorVM.DisplayAuthorVM
 
-<select class="form-select" style="width:250px" size="5" multiple form="formCreate" asp-for="Authors">
-    @foreach(var author in Model.Authors)
-    {
-        <option>@author</option>
-    }
+<select class="form-select" style="width:500px" size="8" multiple form="formCreate" asp-for="Authors" asp-items="Model.Authors">
+    
 </select>

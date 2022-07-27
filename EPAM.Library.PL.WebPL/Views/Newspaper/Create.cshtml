@@ -1,6 +1,6 @@
 ﻿@model EPAM.Library.PL.WebPL.Models.Newspaper.CreateNewspaperVM
 @{
-    ViewData["Title"] = "Create a book";
+    ViewData["Title"] = "Create a newspaper";
 }
 
 <div>
@@ -13,39 +13,56 @@
             <div class="row mb-3">
                 <label asp-for="Name"></label>
                 <input asp-for="Name" />
+                <span asp-validation-for="Name" class="alert-danger"></span>
             </div>
             <div class="row mb-3">
                 <label asp-for="City"></label>
                 <input asp-for="City" />
+                <span asp-validation-for="City" class="alert-danger"></span>
             </div>
             <div class="row mb-3">
                 <label asp-for="Publisher"></label>
                 <input asp-for="Publisher" />
+                <span asp-validation-for="Publisher" class="alert-danger"></span>
             </div>
             <div class="row mb-3">
                 <label asp-for="PublicationYear"></label>
                 <input asp-for="PublicationYear" />
+                <span asp-validation-for="PublicationYear" class="alert-danger"></span>
             </div>
             <div class="row mb-3">
                 <label asp-for="Pages"></label>
                 <input asp-for="Pages" />
+                <span asp-validation-for="Pages" class="alert-danger"></span>
+            </div>
+            <div class="row mb-3">
+                <label asp-for="IssueNumber"></label>
+                <input asp-for="IssueNumber" />
+                <span asp-validation-for="IssueNumber" class="alert-danger"></span>
+            </div>
+            <div class="row mb-3">
+                <label asp-for="IssueDate"></label>
+                <input asp-for="IssueDate" />
+                <span asp-validation-for="IssueDate" class="alert-danger"></span>
             </div>
         </div>
         <div class="row mb-3">
             <label asp-for="ISSN"></label>
-            <input asp-for="ISSN" value="ISBN 91-678-67893" />
+            <input asp-for="ISSN"/>
+            <span asp-validation-for="ISSN" class="alert-danger"></span>
         </div>
         <div class="row mb-3">
             <label asp-for="Description"></label>
             <textarea asp-for="Description">
                 desc
             </textarea>
+            <span asp-validation-for="Description" class="alert-danger"></span>
         </div>
         <div class="row mb-3">
             <button type="submit" class="btn btn-primary" style="width:150px">
                 Create
             </button>
-            <a class="btn btn-warning" style="width:150px" asp-controller="Book" asp-action="Index">
+            <a class="btn btn-warning" style="width:150px" asp-controller="Newspaper" asp-action="Index">
                 Go back to list
             </a>
         </div>

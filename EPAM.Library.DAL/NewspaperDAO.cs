@@ -82,7 +82,7 @@ namespace EPAM.Library.DAL
             {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "GetAllPatents";
+                command.CommandText = "GetAllNewspapers";
 
                 connection.Open();
                 var reader = command.ExecuteReader();
@@ -90,7 +90,7 @@ namespace EPAM.Library.DAL
                 while (reader.Read())
                 {
                     var newspaper = new Newspaper((string)reader["Name"], (string)reader["City"], (string)reader["Publisher"]
-                        , (int)reader["Pages"], (int)reader["PublicationYear"], (DateOnly)reader["IssieDate"]
+                        , (int)reader["Pages"], (int)reader["PublicationYear"], (DateTime)reader["IssueDate"]
                         , (string)reader["IssueNumber"], (string)reader["ISSN"], (string)reader["Description"]);
                     newspaper.ID = (Guid)reader["ID"];
 
@@ -107,7 +107,7 @@ namespace EPAM.Library.DAL
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.CommandText = "AddBook";
+                command.CommandText = "AddNewspaper";
 
                 command.Parameters.Add(new SqlParameter
                 {

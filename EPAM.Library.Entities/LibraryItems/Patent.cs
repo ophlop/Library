@@ -9,22 +9,22 @@
         private string _country;
         private string _registrationNumber;
         private DateTime _applicationDate;
-        private int _publicationYear;
+        private DateTime _publicationDate;
         private List<Author> _authors;
 
-        public Patent(string name, string country, string registrationNumber, int pages, int publicationYear)
+        public Patent(string name, string country, string registrationNumber, int pages, DateTime publicationDate)
         {
             Name = name;
             Pages = pages;
-            PublicationYear = publicationYear;
+            PublicationDate = publicationDate;
             Country = country;
             RegistrationNumber = registrationNumber;
             _authors = new List<Author>();
         }
 
-        public Patent(string name, string country, string registrationNumber, int pages, int publicationYear, DateTime applicationDate
+        public Patent(string name, string country, string registrationNumber, int pages, DateTime publicationDate, DateTime applicationDate
             , List<Author> authors)
-            : this(name, country, registrationNumber, pages, publicationYear)
+            : this(name, country, registrationNumber, pages, publicationDate)
         {
             Authors.AddRange(authors);
             ApplicationDate = applicationDate;
@@ -131,14 +131,14 @@
             }
         }
 
-        public int PublicationYear
+        public DateTime PublicationDate
         {
-            get => _publicationYear;
+            get => _publicationDate;
             set
             {
-                if(ValidationHelper.IsValidPublicationYear(value, ApplicationDate, out string message))
+                if(ValidationHelper.IsValidPublicationYear(value.Year, ApplicationDate, out string message))
                 {
-                    _publicationYear = value;
+                    _publicationDate = value;
                 }
                 else
                 {

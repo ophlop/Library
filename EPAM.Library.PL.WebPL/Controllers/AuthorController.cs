@@ -12,15 +12,15 @@ namespace EPAM.Library.PL.WebPL.Controllers
         // constructor
         IAuthorLogic _authorLogic = AuthorsDependencyResolver.AuthorLogic;
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([FromForm] CreateAuthorViewModel createAuthorVM)
+        public IActionResult Create(CreateAuthorViewModel createAuthorVM)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("~/Views/" + createAuthorVM.ControllerName + "/Create.cshtml");
+            }
+
             var config = new MapperConfiguration(cfg => cfg.CreateMap<CreateAuthorViewModel, Author>());
             IMapper mapper = new Mapper(config);
             var author = mapper.Map<Author>(createAuthorVM);
@@ -28,11 +28,11 @@ namespace EPAM.Library.PL.WebPL.Controllers
             _authorLogic.Add(author);
             try
             {
-                return RedirectToAction("Create", "Book");
+                return RedirectToAction("Create", createAuthorVM.ControllerName);
             }
             catch
             {
-                return View();
+                return View("~/Views/" + createAuthorVM.ControllerName + "/Create.cshtml");
             }
         }
     }

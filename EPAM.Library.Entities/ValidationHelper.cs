@@ -154,7 +154,7 @@ namespace EPAM.Library.Entities
             }
         }
 
-        public static bool IsValidIssueDate(DateOnly issueDate, int publicationYear, out string message)
+        public static bool IsValidIssueDate(DateTime issueDate, int publicationYear, out string message)
         {
             if (issueDate.Year != publicationYear)
             {
@@ -175,12 +175,12 @@ namespace EPAM.Library.Entities
                 message = string.Empty;
                 return true;
             }
-            else if (isbn.Length != 17)
+            else if (isbn.Length != 13)
             {
                 message = "Invalid ISBN format: wrong length";
                 return false;
             }
-            else if (!Regex.IsMatch(isbn, "^ISBN ([0-7]|8[0-9]|9[0-4]|9([5-8][0-9]|9[0-3])|99[4-8][0-9]|999[0-9][0-9])-([0-9]{1,7})-([0-9]{1,7}([0-9]|X))$"))
+            else if (!Regex.IsMatch(isbn, "^([0-7]|8[0-9]|9[0-4]|9([5-8][0-9]|9[0-3])|99[4-8][0-9]|999[0-9][0-9])-([0-9]{1,7})-([0-9]{1,7})-([0-9]|X)$"))
             {
                 message = "Invalid ISBN format";
                 return false;
@@ -194,12 +194,12 @@ namespace EPAM.Library.Entities
 
         public static bool IsValidISSN(string issn, out string message)
         {
-            if (issn.Length == 0)
+            if (issn is null || issn.Length == 0)
             {
                 message = string.Empty;
                 return true;
             }
-            else if (!Regex.IsMatch(issn, "^ISSN [0-9]{4}-[0-9]{4}$"))
+            else if (!Regex.IsMatch(issn, "^[0-9]{4}-[0-9]{4}$"))
             {
                 message = "Invalid ISSN format";
                 return false;

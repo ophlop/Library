@@ -36,12 +36,12 @@ namespace EPAM.Library.BLL
 
         public IEnumerable<Patent> OrderByPublicationYear(IEnumerable<Patent> patents)
         {
-            return patents.OrderBy(i => i.PublicationYear).ToList();
+            return patents.OrderBy(i => i.PublicationDate).ToList();
         }
 
         public IEnumerable<Patent> OrderByPublicationYearDesc(IEnumerable<Patent> patents)
         {
-            return patents.OrderByDescending(i => i.PublicationYear).ToList();
+            return patents.OrderByDescending(i => i.PublicationDate).ToList();
         }
 
         public IEnumerable<Patent> FindByAuthor(string author)
@@ -61,7 +61,7 @@ namespace EPAM.Library.BLL
 
         public List<IGrouping<int, Patent>> GroupByPublicationYear()
         {
-            return _patentDAO.GetAll().GroupBy(i => i.PublicationYear).ToList();
+            return _patentDAO.GetAll().GroupBy(i => i.PublicationDate.Year).ToList();
         }
     }
 }

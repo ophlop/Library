@@ -1,21 +1,22 @@
 ﻿using EPAM.Library.Entities;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EPAM.Library.PL.WebPL.ViewModels.AuthorVM
 {
     public class DisplayAuthorVM
     {
-        private List<string> _authors;
+        private List<SelectListItem> _authors;
 
         public DisplayAuthorVM(IEnumerable<Author> authors)
         {
-            _authors = new List<string>();
+            _authors = new List<SelectListItem>();
 
             foreach(Author author in authors)
             {
-                _authors.Add(author.ToString());
+                _authors.Add( new SelectListItem{Text = author.ToString()});
             }
         }
 
-        public List<string> Authors => _authors;
+        public List<SelectListItem> Authors => _authors;
     }
 }

@@ -98,7 +98,7 @@ namespace EPAM.Library.DAL
                 while (reader.Read())
                 {
                     var patent = new Patent((string)reader["Name"], (string)reader["Country"], (string)reader["RegistrationNumber"]
-                        , (int)reader["Pages"], (int)reader["PublicationYear"], (DateTime)reader["ApplicationDate"]
+                        , (int)reader["Pages"], (DateTime)reader["PublicationDate"], (DateTime)reader["ApplicationDate"]
                         , new List<Author>());
                     patent.ID = (Guid)reader["ID"];
 
@@ -118,7 +118,7 @@ namespace EPAM.Library.DAL
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.CommandText = "AddBook";
+                command.CommandText = "AddPatent";
 
                 command.Parameters.Add(new SqlParameter
                 {
@@ -138,9 +138,9 @@ namespace EPAM.Library.DAL
 
                 command.Parameters.Add(new SqlParameter
                 {
-                    ParameterName = "@PublicationYear",
-                    SqlDbType = SqlDbType.Int,
-                    Value = patent.PublicationYear,
+                    ParameterName = "@PublicationDate",
+                    SqlDbType = SqlDbType.Date,
+                    Value = patent.PublicationDate,
                     Direction = ParameterDirection.Input
                 });
 

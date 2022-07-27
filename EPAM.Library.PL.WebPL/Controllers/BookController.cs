@@ -39,11 +39,25 @@ namespace EPAM.Library.PL.WebPL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([FromForm] CreateBookVM bookVM)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
             var config = new MapperConfiguration(cfg => cfg.CreateMap<CreateBookVM, Book>());
             IMapper mapper = new Mapper(config);
-            var book = mapper.Map<Book>(bookVM);
+
+            //try
+            //{
+                var book = mapper.Map<Book>(bookVM);
+                bookLogic.Add(book);
+            //}
+            //catch
+            //{
+
+            //}
+
             
-            bookLogic.Add(book);
             
             try 
             {

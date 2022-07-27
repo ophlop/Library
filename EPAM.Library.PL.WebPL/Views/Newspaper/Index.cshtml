@@ -11,7 +11,7 @@
         </div>
         <div class="col-6 text-end">
             <a class="btn btn-success" asp-controller="Newspaper" asp-action="Create">
-                Create new book
+                Create new newspaper
             </a>
         </div>
     </div>
@@ -45,7 +45,7 @@
                     @obj.IssueNumber
                 </td>
                 <td style="width:15%">
-                    @obj.IssueDate
+                    @obj.IssueDate.ToString("dd/MM/yyyy")
                 </td>
                 <td style="width:30%">
                     <a class="btn btn-primary d-inline-block" @*asp-action="" asp-route-id=""*@>Details</a>
@@ -53,4 +53,5 @@
                 </td>
         </tr>
       }
+  </tbody>
 </table>
