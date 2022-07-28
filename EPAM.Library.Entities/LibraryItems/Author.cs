@@ -4,30 +4,30 @@ namespace EPAM.Library.Entities
 {
     public class Author  // LastName insted of SecondName
     {
-        private string _name;
+        private string _firstName;
         private string _secondName;
 
         public Author(string fullName)
         {
             var temp = fullName.Split(' ');
-            this.Name = temp[0];
+            this.FirstName = temp[0];
             this.SecondName = temp[1];
         }
 
-        public Author(string name, string secondName)
+        public Author(string firstName, string secondName)
         {
-            this.Name = name;
+            this.FirstName = firstName;
             this.SecondName = secondName;
         }
 
-        public string Name
+        public string FirstName
         {
-            get => _name;
+            get => _firstName;
             set
             {
                 if (value.Length == 0)
                 {
-                    _name = value;
+                    _firstName = value;
                     return;
                 }
 
@@ -38,7 +38,7 @@ namespace EPAM.Library.Entities
 
                 if (Regex.IsMatch(value, "(^[A-Z][a-z]*(|-[A-Z][a-z]*)$)|(^[А-ЯЁ][а-яё]*(|-[А-ЯЁ][а-яё]*)$)"))
                 {
-                    _name = value;
+                    _firstName = value;
                 }
                 else
                 {
@@ -53,7 +53,7 @@ namespace EPAM.Library.Entities
             {
                 if (value.Length == 0)
                 {
-                    _name = value;
+                    _firstName = value;
                     return;
                 }
 
@@ -79,7 +79,7 @@ namespace EPAM.Library.Entities
             {
                 return "none";
             }
-            return Name + " " + SecondName;
+            return FirstName + " " + SecondName;
         }
 
         public static bool operator ==(Author author1, Author author2)

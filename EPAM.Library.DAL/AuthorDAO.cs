@@ -20,7 +20,7 @@ namespace EPAM.Library.DAL
                 {
                     ParameterName = "@FirstName",
                     SqlDbType = SqlDbType.NVarChar,
-                    Value = author.Name,
+                    Value = author.FirstName,
                     Direction = ParameterDirection.Input
                 });
 
@@ -95,7 +95,7 @@ namespace EPAM.Library.DAL
                 {
                     ParameterName = "@FirstName",
                     SqlDbType = SqlDbType.NVarChar,
-                    Value = author.Name,
+                    Value = author.FirstName,
                     Direction = ParameterDirection.Input
                 });
 

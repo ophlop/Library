@@ -14,11 +14,11 @@ namespace EPAM.Library.PL.WebPL.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(CreateAuthorViewModel createAuthorVM)
+        public IActionResult CreateFromBook(CreateAuthorViewModel createAuthorVM)
         {
             if (!ModelState.IsValid)
             {
-                return View("~/Views/" + createAuthorVM.ControllerName + "/Create.cshtml");
+                return View("~/Views/Book/Create.cshtml");
             }
 
             var config = new MapperConfiguration(cfg => cfg.CreateMap<CreateAuthorViewModel, Author>());
@@ -28,11 +28,35 @@ namespace EPAM.Library.PL.WebPL.Controllers
             _authorLogic.Add(author);
             try
             {
-                return RedirectToAction("Create", createAuthorVM.ControllerName);
+                return RedirectToAction("Create", "Book");
             }
             catch
             {
-                return View("~/Views/" + createAuthorVM.ControllerName + "/Create.cshtml");
+                return View("~/Views/Book/Create.cshtml");
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateFromPatent(CreateAuthorViewModel createAuthorVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("~/Views/Patent/Create.cshtml");
+            }
+
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<CreateAuthorViewModel, Author>());
+            IMapper mapper = new Mapper(config);
+            var author = mapper.Map<Author>(createAuthorVM);
+
+            _authorLogic.Add(author);
+            try
+            {
+                return RedirectToAction("Create", "Patent");
+            }
+            catch
+            {
+                return View("~/Views/Patent/Create.cshtml");
             }
         }
     }
